@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://corexcapitalai.github.io/CoreX-Capital-AI/sitemap.xml
