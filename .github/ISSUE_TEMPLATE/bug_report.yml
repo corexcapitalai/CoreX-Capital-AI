@@ -1,0 +1,41 @@
+name: Public repository bug
+about: Report a bug in the documentation, static showcase, mock API, or public examples
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a public-repository issue. Do not include credentials, private code, account data, or security vulnerabilities here. Use the private security reporting process for vulnerabilities.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Documentation
+        - Static showcase
+        - Mock API
+        - Public API contract
+        - CI / validation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include clear reproduction steps using public repository content only.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Public boundary
+      options:
+        - label: I confirm this report contains no secrets, private code, user/account data, or confidential information.
+          required: true

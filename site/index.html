@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CoreX Capital AI public reference architecture — agentic intelligence with deterministic governance." />
+  <meta name="theme-color" content="#07111f" />
+  <title>CoreX Capital AI — Public Reference</title>
+  <link rel="icon" href="assets/corex-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="CoreX Capital AI home">
+        <img src="assets/corex-mark.svg" alt="" width="36" height="36" />
+        <span><strong>COREX</strong> CAPITAL AI</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#platform">Platform</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#governance">Governance</a>
+        <a href="#developers">Developers</a>
+      </nav>
+      <a class="button button-ghost" href="https://corexcapitalai.com/" target="_blank" rel="noreferrer">Official website ↗</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> PUBLIC REFERENCE EDITION</div>
+        <h1>Agentic intelligence.<br /><span>Deterministic control.</span></h1>
+        <p class="hero-lead">A public-safe view of CoreX Capital AI: AI-assisted market intelligence governed by explicit policy, risk and explainability layers.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#architecture">Explore architecture</a>
+          <a class="button button-secondary" href="https://corexsignalai.com/" target="_blank" rel="noreferrer">Open live ecosystem ↗</a>
+        </div>
+        <p class="fine-print">No proprietary engine, model weights, private infrastructure, execution code or licensed charting source is included here.</p>
+      </div>
+
+      <div class="hero-panel" aria-label="Illustrative decision telemetry">
+        <div class="panel-topline">
+          <span>DECISION TRACE</span>
+          <span class="status-dot"><i></i> SYNTHETIC</span>
+        </div>
+        <div class="trace-id">cx-public-7F2A91</div>
+        <div class="decision-grid">
+          <div><small>PROPOSAL</small><strong id="proposalValue">BUY</strong></div>
+          <div><small>CONFIDENCE</small><strong id="confidenceValue">74%</strong></div>
+          <div><small>GOVERNANCE</small><strong class="good" id="governanceValue">CLEARED</strong></div>
+          <div><small>RISK</small><strong id="riskValue">LOW</strong></div>
+        </div>
+        <div class="reason-box">
+          <span>EXPLANATION</span>
+          <p id="reasonText">Illustrative proposal passed all public-facing policy checks. No production execution is performed.</p>
+        </div>
+        <button class="mini-button" id="simulateButton" type="button">Simulate another decision</button>
+      </div>
+    </section>
+
+    <section class="metrics-strip" aria-label="Reference characteristics">
+      <div class="shell metric-grid">
+        <div><strong>4</strong><span>Separated system boundaries</span></div>
+        <div><strong>0</strong><span>Production secrets included</span></div>
+        <div><strong>Read-only</strong><span>Illustrative public API</span></div>
+        <div><strong>Deterministic</strong><span>Governance after inference</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="platform">
+      <div class="section-heading">
+        <div class="eyebrow">PLATFORM MODEL</div>
+        <h2>Four public pillars. One controlled decision path.</h2>
+        <p>The public repository explains roles and interfaces while preserving the implementation boundary.</p>
+      </div>
+      <div class="card-grid four">
+        <article class="feature-card">
+          <span class="card-index">01</span>
+          <h3>Physics Core</h3>
+          <p>Deterministic control concepts that sit outside probabilistic model confidence.</p>
+          <span class="tag">CONTROL LAYER</span>
+        </article>
+        <article class="feature-card">
+          <span class="card-index">02</span>
+          <h3>CoreX Signal AI</h3>
+          <p>Explainable intelligence surfaces with context, confidence and reason codes.</p>
+          <span class="tag">INTELLIGENCE</span>
+        </article>
+        <article class="feature-card">
+          <span class="card-index">03</span>
+          <h3>Strategy OS™</h3>
+          <p>A structured orchestration concept for strategy intent, checks and observable outputs.</p>
+          <span class="tag">ORCHESTRATION</span>
+        </article>
+        <article class="feature-card">
+          <span class="card-index">04</span>
+          <h3>Autonomous Veto</h3>
+          <p>A guardrail pattern that can hold or veto an AI proposal when deterministic rules fail.</p>
+          <span class="tag">GOVERNANCE</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="architecture">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">PUBLIC ARCHITECTURE</div>
+          <h2>Probabilistic intelligence never owns the final gate.</h2>
+          <p>The architecture intentionally separates data intake, intelligence, governance and public presentation.</p>
+        </div>
+
+        <div class="architecture-flow" role="img" aria-label="Market data flows through normalization, intelligence, deterministic governance, explainability and public interfaces">
+          <div class="arch-node"><small>BOUNDARY 1</small><strong>Data Intake</strong><span>Validate · Normalize</span></div>
+          <i aria-hidden="true">→</i>
+          <div class="arch-node"><small>BOUNDARY 2</small><strong>AI Intelligence</strong><span>Context · Proposal</span></div>
+          <i aria-hidden="true">→</i>
+          <div class="arch-node accent"><small>BOUNDARY 3</small><strong>Governance</strong><span>Policy · Risk · Veto</span></div>
+          <i aria-hidden="true">→</i>
+          <div class="arch-node"><small>BOUNDARY 4</small><strong>Public Surface</strong><span>Explain · Publish</span></div>
+        </div>
+
+        <div class="principles-grid">
+          <div><span>01</span><h3>Validate first</h3><p>Malformed, stale or untrusted inputs are treated as boundary failures, not silently accepted context.</p></div>
+          <div><span>02</span><h3>Explain the state</h3><p>Decision objects expose sanitized reasons, timestamps, trace IDs and final governance state.</p></div>
+          <div><span>03</span><h3>Separate privilege</h3><p>Public interfaces do not inherit execution, administration or production control-plane privileges.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="governance">
+      <div class="split-layout">
+        <div class="section-heading sticky-copy">
+          <div class="eyebrow">AUTONOMOUS VETO PROTOCOL</div>
+          <h2>Confidence is not authorization.</h2>
+          <p>An AI proposal can be strong and still be held or vetoed. Deterministic controls evaluate the final public state independently.</p>
+          <a class="text-link" href="../docs/ARCHITECTURE.md">Read the architecture document →</a>
+        </div>
+        <div class="gate-stack">
+          <article><b>01</b><div><small>AI OUTPUT</small><h3>Proposal</h3><p>Model or orchestration layer produces a suggestion plus contextual explanation.</p></div><span class="state neutral">PROPOSED</span></article>
+          <article><b>02</b><div><small>DETERMINISTIC</small><h3>Policy gate</h3><p>Checks schema, freshness, entitlement and explicit policy constraints.</p></div><span class="state pass">CHECK</span></article>
+          <article><b>03</b><div><small>DETERMINISTIC</small><h3>Risk gate</h3><p>Evaluates risk constraints separately from model confidence.</p></div><span class="state pass">CHECK</span></article>
+          <article><b>04</b><div><small>FINAL STATE</small><h3>Clear · Hold · Veto</h3><p>Public output carries the final state and sanitized reason codes.</p></div><span class="state final">DECIDE</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-code" id="developers">
+      <div class="shell developer-grid">
+        <div class="section-heading">
+          <div class="eyebrow">DEVELOPER SURFACE</div>
+          <h2>A safe contract for evaluation.</h2>
+          <p>The repository includes a synthetic OpenAPI contract and zero-dependency Python mock server. There are no write or execution endpoints.</p>
+          <div class="developer-actions">
+            <a class="button button-primary" href="../openapi/public-api.yaml">Open API contract</a>
+            <a class="button button-secondary" href="../examples/mock_server.py">View mock server</a>
+          </div>
+        </div>
+        <pre class="code-card" aria-label="Example API response"><code>{
+  "schema_version": "1.0",
+  "trace_id": "cx-public-7F2A91",
+  "proposal": {
+    "action": "BUY",
+    "confidence": 0.74
+  },
+  "governance": {
+    "state": "CLEARED",
+    "reasons": ["PUBLIC_DEMO_ONLY"]
+  },
+  "execution": null,
+  "synthetic": true
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="disclosure shell" aria-label="Important disclosure">
+      <strong>PUBLIC DEMONSTRATION ONLY</strong>
+      <p>All telemetry, prices, confidence values, risk labels and performance-style values in this public reference are synthetic or illustrative unless explicitly sourced. Nothing here is investment advice, audited performance, a solicitation or a guarantee of future results.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div class="brand footer-brand"><img src="assets/corex-mark.svg" alt="" width="32" height="32" /><span><strong>COREX</strong> CAPITAL AI</span></div>
+      <div class="footer-links">
+        <a href="https://corexcapitalai.com/" target="_blank" rel="noreferrer">Website</a>
+        <a href="https://corexsignalai.com/" target="_blank" rel="noreferrer">Ecosystem</a>
+        <a href="../SECURITY.md">Security</a>
+        <a href="../docs/PUBLIC_BOUNDARY.md">Public boundary</a>
+      </div>
+      <p>© <span id="year">2026</span> CoreX Capital AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: CoreX Capital AI Public Reference API
+  version: 1.0.0
+  description: >-
+    Illustrative, read-only API contract for public integration planning.
+    This contract is synthetic and is not a production trading or execution API.
+  contact:
+    url: https://corexcapitalai.com/
+  license:
+    name: All Rights Reserved
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local mock server only
+paths:
+  /v1/health:
+    get:
+      summary: Public mock health state
+      operationId: getHealth
+      responses:
+        '200':
+          description: Healthy local mock
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /v1/system:
+    get:
+      summary: Public-safe capability metadata
+      operationId: getSystem
+      responses:
+        '200':
+          description: Public system metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemInfo'
+  /v1/signals/example:
+    get:
+      summary: Synthetic explainability-oriented signal object
+      operationId: getExampleSignal
+      responses:
+        '200':
+          description: Illustrative signal; never live execution data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalEnvelope'
+components:
+  schemas:
+    Health:
+      type: object
+      required: [status, environment, synthetic]
+      properties:
+        status:
+          type: string
+          const: ok
+        environment:
+          type: string
+          const: public-mock
+        synthetic:
+          type: boolean
+          const: true
+    SystemInfo:
+      type: object
+      required: [product, api_version, environment, capabilities, synthetic]
+      properties:
+        product:
+          type: string
+          example: CoreX Capital AI
+        api_version:
+          type: string
+          example: '1.0'
+        environment:
+          type: string
+          const: public-mock
+        capabilities:
+          type: array
+          items:
+            type: string
+          example:
+            - explainable-signal-contract
+            - deterministic-governance-state
+            - synthetic-demo-data
+        synthetic:
+          type: boolean
+          const: true
+    Proposal:
+      type: object
+      required: [action, confidence, horizon]
+      properties:
+        action:
+          type: string
+          enum: [BUY, SELL, HOLD]
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        horizon:
+          type: string
+          example: illustrative
+    Governance:
+      type: object
+      required: [state, reasons]
+      properties:
+        state:
+          type: string
+          enum: [PROPOSED, HELD, VETOED, CLEARED, PUBLISHED]
+        reasons:
+          type: array
+          items:
+            type: string
+    Explanation:
+      type: object
+      required: [summary, factors]
+      properties:
+        summary:
+          type: string
+        factors:
+          type: array
+          items:
+            type: object
+            required: [name, direction]
+            properties:
+              name:
+                type: string
+              direction:
+                type: string
+                enum: [positive, neutral, negative]
+    SignalEnvelope:
+      type: object
+      required:
+        - schema_version
+        - trace_id
+        - generated_at
+        - symbol
+        - proposal
+        - governance
+        - explanation
+        - execution
+        - synthetic
+        - disclaimer
+      properties:
+        schema_version:
+          type: string
+          example: '1.0'
+        trace_id:
+          type: string
+          example: cx-public-7F2A91
+        generated_at:
+          type: string
+          format: date-time
+        symbol:
+          type: string
+          example: XAUUSD-DEMO
+        proposal:
+          $ref: '#/components/schemas/Proposal'
+        governance:
+          $ref: '#/components/schemas/Governance'
+        explanation:
+          $ref: '#/components/schemas/Explanation'
+        execution:
+          type: 'null'
+          description: Public reference API does not expose execution.
+        synthetic:
+          type: boolean
+          const: true
+        disclaimer:
+          type: string
+          example: Illustrative public-reference data only; not investment advice or live execution.

@@ -1,0 +1,34 @@
+name: Public repository improvement
+about: Suggest a documentation, demo, schema, or interoperability improvement
+title: "[Enhancement]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggestions must stay inside the public boundary. Requests to publish proprietary engines, thresholds, private infrastructure, execution code, credentials or licensed third-party source will not be accepted here.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Documentation
+        - Static showcase
+        - Mock API
+        - Public API contract
+        - Developer experience
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired public outcome
+      description: Explain what a public evaluator or integrator should be able to understand or do.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true

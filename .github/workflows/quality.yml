@@ -1,0 +1,49 @@
+name: Public repository quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate public boundary
+        run: python scripts/validate_public_repo.py
+
+      - name: Compile Python examples
+        run: python -m compileall -q examples scripts
+
+      - name: Validate JSON example
+        run: python -m json.tool examples/sample_signal.json > /dev/null
+
+      - name: Smoke-test local mock API
+        shell: bash
+        run: |
+          python examples/mock_server.py > /tmp/corex-public-mock.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8787/v1/health > /tmp/health.json; then
+              break
+            fi
+            sleep 0.25
+          done
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('/tmp/health.json').read_text())
+          assert payload == {'status': 'ok', 'environment': 'public-mock', 'synthetic': True}
+          PY

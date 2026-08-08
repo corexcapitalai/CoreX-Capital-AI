@@ -1,0 +1,8 @@
+# Public repository ownership
+* @corexcapitalai
+
+# Disclosure-sensitive surfaces require owner review
+/docs/PUBLIC_BOUNDARY.md @corexcapitalai
+/SECURITY.md @corexcapitalai
+/openapi/ @corexcapitalai
+/.github/ @corexcapitalai
