@@ -60,9 +60,9 @@
         <div><small>ANALYSIS</small><strong>Multi-Timeframe</strong><span>Regime + factor context</span></div>
         <div><small>FORECAST</small><strong>Monte Carlo</strong><span>Probabilistic ranges</span></div>
         <div><small>EXPLAIN</small><strong>Attribution</strong><span>Driver-level reasoning</span></div>
-        <div><small>DELIVERY</small><strong>Real-Time PWA</strong><span>WebSocket client</span></div>
+        <div><small>DELIVERY</small><strong>11-Language PWA</strong><span>Real-time WebSocket client</span></div>
       </div>
-      <div class="terminal-flow"><span>MT5 Data</span><i>→</i><span>Python Quant</span><i>→</i><span>Socket Relay</span><i>→</i><span>PWA</span></div>
+      <div class="terminal-flow"><span>MT5 · 9 TFs × 7+ Symbols</span><i>→</i><span>Python Quant</span><i>→</i><span>Socket Relay</span><i>→</i><span>11-Language PWA</span></div>
     </div>
   </div>
 </section>
@@ -84,6 +84,10 @@
     <article class="matrix-card reveal"><span>06</span><h3>Market Regime Pulse</h3><p>Regime, correlation and session context are shown as a separate state rather than hidden inside a single model score.</p></article>
     <article class="matrix-card reveal"><span>07</span><h3>Macro Intelligence</h3><p>The product surface includes a macro/news intelligence feed with NLP-oriented sentiment and impact context.</p></article>
     <article class="matrix-card reveal"><span>08</span><h3>Factor Cluster Analysis</h3><p>Multi-axis factor grouping provides another view of how the system decomposes market state and decision context.</p></article>
+    <article class="matrix-card reveal"><span>09</span><h3>Multi-Channel Alerts</h3><p>The public interface shows Telegram, email and push-notification delivery as real-time signal surfaces.</p></article>
+    <article class="matrix-card reveal"><span>10</span><h3>Multi-Asset Signal Feed</h3><p>Published examples span crypto, forex, equities and gold/market instruments, while the system architecture describes 7+ symbols.</p></article>
+    <article class="matrix-card reveal"><span>11</span><h3>Reasoned Signal Layouts</h3><p>BUY and HOLD examples are presented with score, threshold and factor reasoning. The official page explicitly labels these examples illustrative.</p></article>
+    <article class="matrix-card reveal"><span>12</span><h3>Price & Signal Chart</h3><p>The public chart surface exposes M1 through monthly context, with signal overlays and multiple timeframe controls.</p></article>
   </div>
 </section>
 
@@ -111,13 +115,13 @@
     <p>CoreX Signal AI publishes a concrete end-to-end architecture for its real-time delivery surface.</p>
   </div>
   <div class="architecture-stack reveal">
-    <div class="arch-stage"><small>SOURCE</small><strong>MT5 Broker Data</strong><span>Raw OHLCV · multiple symbols/timeframes</span></div>
+    <div class="arch-stage"><small>SOURCE</small><strong>MT5 Broker Data</strong><span>Raw OHLCV · 9 TFs × 7+ symbols</span></div>
     <div class="arch-arrow">↓</div>
     <div class="arch-stage accent"><small>CORE</small><strong>Python Quant Engine</strong><span>Signal processing · ML ensemble · risk engine</span></div>
     <div class="arch-arrow">↓</div>
     <div class="arch-stage"><small>RELAY</small><strong>Flask-SocketIO Server</strong><span>Signals + JSON · WebSocket delivery</span></div>
     <div class="arch-arrow">↓</div>
-    <div class="arch-stage"><small>CLIENT</small><strong>PWA Dashboard</strong><span>Real-time, multilingual client experience</span></div>
+    <div class="arch-stage"><small>CLIENT</small><strong>PWA Dashboard</strong><span>Real-time · 11 languages</span></div>
   </div>
   <div class="spec-grid">
     <div><small>AUTHENTICATION</small><strong>HMAC-SHA256</strong><span>Published client authentication method</span></div>
@@ -126,6 +130,8 @@
     <div><small>EDGE</small><strong>Global CDN</strong><span>Distributed client delivery layer</span></div>
     <div><small>PERFORMANCE</small><strong>Sub-200 ms target</strong><span>Public architecture target/claim</span></div>
     <div><small>AVAILABILITY</small><strong>99.9% target</strong><span>Public product target, not an SLA in this repo</span></div>
+    <div><small>SOURCE COVERAGE</small><strong>9 TFs × 7+ Symbols</strong><span>Published architecture description</span></div>
+    <div><small>CLIENT LANGUAGE</small><strong>11 Languages</strong><span>Published real-time PWA capability</span></div>
   </div>
 </section>
 
