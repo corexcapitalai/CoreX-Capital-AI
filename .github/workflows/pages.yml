@@ -19,39 +19,142 @@ concurrency:
 
 jobs:
   validate-site:
-    name: Validate static site
+    name: Validate public product portal
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Verify required site files
+      - name: Verify required portal files
         shell: bash
         run: |
           set -euo pipefail
-          test -f site/index.html
-          test -f site/styles.css
-          test -f site/app.js
-          test -f site/assets/corex-mark.svg
+          for file in \
+            site/index.html \
+            site/signal-ai.html \
+            site/brokerage-infrastructure.html \
+            site/axisoption.html \
+            site/strategy-os.html \
+            site/governance.html \
+            site/technology.html \
+            site/about.html \
+            site/styles.css \
+            site/app.js \
+            site/assets/corex-mark.svg; do
+            test -s "$file"
+          done
 
-      - name: Smoke-test static site
+      - name: Validate internal links and document metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path('site')
+          pages = sorted(root.glob('*.html'))
+          errors = []
+
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.ids = []
+                  self.title = ''
+                  self.in_title = False
+                  self.description = None
+
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == 'a' and attrs.get('href'):
+                      self.links.append(attrs['href'])
+                  if attrs.get('id'):
+                      self.ids.append(attrs['id'])
+                  if tag == 'meta' and attrs.get('name') == 'description':
+                      self.description = attrs.get('content', '').strip()
+                  if tag == 'title':
+                      self.in_title = True
+
+              def handle_endtag(self, tag):
+                  if tag == 'title':
+                      self.in_title = False
+
+              def handle_data(self, data):
+                  if self.in_title:
+                      self.title += data
+
+          for page in pages:
+              parser = Parser()
+              parser.feed(page.read_text(encoding='utf-8'))
+              rel = page.relative_to(root)
+
+              if not parser.title.strip():
+                  errors.append(f'{rel}: missing <title>')
+              if not parser.description:
+                  errors.append(f'{rel}: missing meta description')
+              if len(parser.ids) != len(set(parser.ids)):
+                  errors.append(f'{rel}: duplicate id attribute')
+
+              for href in parser.links:
+                  parsed = urlparse(href)
+                  if parsed.scheme or href.startswith('//') or href.startswith('mailto:') or href.startswith('tel:'):
+                      continue
+                  path = parsed.path
+                  if not path or path == '/':
+                      continue
+                  target = (page.parent / path).resolve()
+                  try:
+                      target.relative_to(root.resolve())
+                  except ValueError:
+                      errors.append(f'{rel}: local link escapes site root: {href}')
+                      continue
+                  if path.endswith('/'):
+                      target = target / 'index.html'
+                  if not target.exists():
+                      errors.append(f'{rel}: missing local target: {href}')
+
+          if errors:
+              raise SystemExit('\n'.join(errors))
+          print(f'Validated {len(pages)} HTML documents and local links.')
+          PY
+
+      - name: Smoke-test every public page
         shell: bash
         run: |
           set -euo pipefail
           python3 -m http.server 8080 --directory site > /tmp/corex-public-site.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
           for attempt in {1..20}; do
             if curl --fail --silent http://127.0.0.1:8080/ > /tmp/corex-index.html; then
               break
             fi
             sleep 0.25
           done
-          test -s /tmp/corex-index.html
+
           grep -Fq '<title>CoreX Capital AI — Institutional AI & Financial Infrastructure</title>' /tmp/corex-index.html
-          grep -Fq 'Understand CoreX in one screen.' /tmp/corex-index.html
-          grep -Fq 'CoreX Signal AI' /tmp/corex-index.html
-          grep -Fq 'AxisOption' /tmp/corex-index.html
+          grep -Fq 'One financial technology ecosystem.' /tmp/corex-index.html
+
+          declare -A checks=(
+            [signal-ai.html]='CoreX Signal AI'
+            [brokerage-infrastructure.html]='12 CORE MODULES'
+            [axisoption.html]='AxisOption'
+            [strategy-os.html]='Strategy OS'
+            [governance.html]='Autonomous Veto Protocol'
+            [technology.html]='STACK BY LAYER'
+            [about.html]='THE MISSION'
+          )
+
+          for page in "${!checks[@]}"; do
+            output="/tmp/${page}.html"
+            curl --fail --silent "http://127.0.0.1:8080/${page}" > "$output"
+            test -s "$output"
+            grep -Fq "${checks[$page]}" "$output"
+          done
+
           curl --fail --silent http://127.0.0.1:8080/styles.css > /dev/null
           curl --fail --silent http://127.0.0.1:8080/app.js > /dev/null
           curl --fail --silent http://127.0.0.1:8080/assets/corex-mark.svg > /dev/null
