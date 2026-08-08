@@ -1,5 +1,5 @@
 name: Public repository bug
-about: Report a bug in the documentation, static showcase, mock API, or public examples
+description: Report a bug in the documentation, static showcase, mock API, or public examples
 title: "[Bug]: "
 labels: [bug]
 body:
