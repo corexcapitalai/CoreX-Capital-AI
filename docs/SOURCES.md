@@ -15,6 +15,17 @@ Public statements are handled in four categories:
 
 The repository must not silently convert categories 3 or 4 into independently verified facts.
 
+### Source precedence and public-copy differences
+
+When two first-party pages describe the same product differently, this repository prefers the **product-specific page for product-specific technical details** and the **parent/company page for parent-company positioning**. Differences are not silently merged into a new claim.
+
+Two currently observed examples:
+
+- The CoreX Capital AI parent homepage describes CoreX Signal AI as operating in **10 languages**, while the current CoreX Signal AI product architecture states an **11-language real-time client**. The portal uses the 11-language figure only when describing the Signal AI product architecture and otherwise uses neutral wording such as “multilingual.”
+- The AxisOption main-site footer currently highlights Binary, Turbo and Range Options, while the dedicated Products page also lists **One-Touch Options**. The portal treats the dedicated Products page as the product-family source.
+
+These are normal first-party content-version differences; they are recorded here so the public reference remains traceable and does not present a reconciled number as independently verified fact.
+
 ## CoreX Capital AI
 
 ### Main product surface
