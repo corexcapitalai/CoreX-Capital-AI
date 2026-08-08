@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Verify required portal files
         shell: bash
@@ -43,8 +43,9 @@ jobs:
             site/app.js \
             site/assets/corex-mark.svg \
             site/robots.txt \
-            site/sitemap.xml; do
-            test -s "$file"
+            site/sitemap.xml \
+            site/.nojekyll; do
+            test -e "$file"
           done
 
       - name: Validate internal links and document metadata
@@ -123,6 +124,40 @@ jobs:
           print(f'Validated {len(pages)} HTML documents and local links.')
           PY
 
+      - name: Validate indexing files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          base = 'https://corexcapitalai.github.io/CoreX-Capital-AI/'
+          expected = {
+              base,
+              base + 'signal-ai.html',
+              base + 'brokerage-infrastructure.html',
+              base + 'axisoption.html',
+              base + 'strategy-os.html',
+              base + 'governance.html',
+              base + 'technology.html',
+              base + 'about.html',
+          }
+
+          tree = ET.parse('site/sitemap.xml')
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          found = {node.text.strip() for node in tree.findall('.//sm:loc', ns) if node.text}
+          if found != expected:
+              raise SystemExit(f'sitemap mismatch: expected={sorted(expected)} found={sorted(found)}')
+
+          robots = Path('site/robots.txt').read_text(encoding='utf-8')
+          expected_sitemap = 'Sitemap: ' + base + 'sitemap.xml'
+          if 'User-agent: *' not in robots or 'Allow: /' not in robots or expected_sitemap not in robots:
+              raise SystemExit('robots.txt does not expose the expected sitemap/indexing policy')
+
+          print('Validated sitemap.xml and robots.txt.')
+          PY
+
       - name: Smoke-test every public page
         shell: bash
         run: |
@@ -174,16 +209,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
