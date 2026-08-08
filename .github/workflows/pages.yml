@@ -48,6 +48,27 @@ jobs:
             test -e "$file"
           done
 
+      - name: Reject unexpected hidden deployable files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path('site')
+          allowed = {Path('.nojekyll')}
+          unexpected = []
+          for path in root.rglob('*'):
+              rel = path.relative_to(root)
+              if rel in allowed:
+                  continue
+              if any(part.startswith('.') for part in rel.parts):
+                  unexpected.append(str(rel))
+          if unexpected:
+              raise SystemExit('Unexpected hidden deployable paths:\n - ' + '\n - '.join(sorted(unexpected)))
+          print('Hidden deployable path policy passed.')
+          PY
+
       - name: Validate internal links and document metadata
         shell: bash
         run: |
