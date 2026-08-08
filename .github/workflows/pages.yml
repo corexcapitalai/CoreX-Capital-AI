@@ -38,9 +38,12 @@ jobs:
             site/governance.html \
             site/technology.html \
             site/about.html \
+            site/404.html \
             site/styles.css \
             site/app.js \
-            site/assets/corex-mark.svg; do
+            site/assets/corex-mark.svg \
+            site/robots.txt \
+            site/sitemap.xml; do
             test -s "$file"
           done
 
@@ -146,6 +149,7 @@ jobs:
             [governance.html]='Autonomous Veto Protocol'
             [technology.html]='STACK BY LAYER'
             [about.html]='THE MISSION'
+            [404.html]='404 — PUBLIC PORTAL'
           )
 
           for page in "${!checks[@]}"; do
@@ -158,10 +162,11 @@ jobs:
           curl --fail --silent http://127.0.0.1:8080/styles.css > /dev/null
           curl --fail --silent http://127.0.0.1:8080/app.js > /dev/null
           curl --fail --silent http://127.0.0.1:8080/assets/corex-mark.svg > /dev/null
+          curl --fail --silent http://127.0.0.1:8080/robots.txt > /dev/null
+          curl --fail --silent http://127.0.0.1:8080/sitemap.xml > /dev/null
 
   deploy-pages:
     name: Deploy GitHub Pages
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     needs: validate-site
     environment:
       name: github-pages
