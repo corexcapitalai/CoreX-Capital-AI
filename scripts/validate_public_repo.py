@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE_ROOT = ROOT / "site"
 
 REQUIRED = (
     "README.md",
@@ -72,6 +73,7 @@ SECRET_PATTERNS = {
 # File types / names that should never appear in this public reference repo.
 DISALLOWED_SUFFIXES = {".pem", ".key", ".p12", ".pfx", ".onnx", ".pt", ".pth", ".h5", ".joblib"}
 DISALLOWED_NAMES = {".env", "secrets.json", "credentials.json", "production.env"}
+ALLOWED_SITE_DOTFILES = {".nojekyll"}
 
 
 def iter_text_files() -> list[Path]:
@@ -96,6 +98,16 @@ def main() -> int:
             continue
         if path.name.lower() in DISALLOWED_NAMES or path.suffix.lower() in DISALLOWED_SUFFIXES:
             errors.append(f"disallowed public artifact: {path.relative_to(ROOT)}")
+
+    # The Pages artifact intentionally includes hidden files so .nojekyll is
+    # deployed. Restrict the deployable site directory to that one known dotfile.
+    if SITE_ROOT.is_dir():
+        for path in SITE_ROOT.rglob("*"):
+            if not path.is_file():
+                continue
+            hidden_parts = [part for part in path.relative_to(SITE_ROOT).parts if part.startswith(".")]
+            if hidden_parts and path.name not in ALLOWED_SITE_DOTFILES:
+                errors.append(f"unexpected hidden deployable file: {path.relative_to(ROOT)}")
 
     text_files = iter_text_files()
     for path in text_files:
