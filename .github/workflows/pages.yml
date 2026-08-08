@@ -1,4 +1,4 @@
-name: Deploy public reference site
+name: Public reference site
 
 on:
   push:
@@ -14,11 +14,49 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: public-reference-site
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate-site:
+    name: Validate static site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required site files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site/index.html
+          test -f site/styles.css
+          test -f site/app.js
+          test -f site/assets/corex-mark.svg
+
+      - name: Smoke-test static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8080 --directory site > /tmp/corex-public-site.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8080/ > /tmp/corex-index.html; then
+              break
+            fi
+            sleep 0.25
+          done
+          test -s /tmp/corex-index.html
+          grep -Fq '<title>CoreX Capital AI — Public Reference</title>' /tmp/corex-index.html
+          curl --fail --silent http://127.0.0.1:8080/styles.css > /dev/null
+          curl --fail --silent http://127.0.0.1:8080/app.js > /dev/null
+          curl --fail --silent http://127.0.0.1:8080/assets/corex-mark.svg > /dev/null
+
+  deploy-pages:
+    name: Deploy GitHub Pages
+    if: ${{ vars.ENABLE_GITHUB_PAGES == 'true' }}
+    needs: validate-site
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
