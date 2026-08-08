@@ -21,9 +21,25 @@ REQUIRED = (
     "CONTRIBUTING.md",
     "docs/PUBLIC_BOUNDARY.md",
     "docs/ARCHITECTURE.md",
+    "docs/PRODUCT_OVERVIEW.md",
+    "docs/SOURCES.md",
     "openapi/public-api.yaml",
     "examples/sample_signal.json",
     "site/index.html",
+    "site/signal-ai.html",
+    "site/brokerage-infrastructure.html",
+    "site/axisoption.html",
+    "site/strategy-os.html",
+    "site/governance.html",
+    "site/technology.html",
+    "site/about.html",
+    "site/404.html",
+    "site/styles.css",
+    "site/app.js",
+    "site/assets/corex-mark.svg",
+    "site/robots.txt",
+    "site/sitemap.xml",
+    "site/.nojekyll",
 )
 
 SKIP_PARTS = {".git", "__pycache__", ".venv", "venv", "node_modules"}
@@ -38,11 +54,14 @@ TEXT_SUFFIXES = {
     ".html",
     ".css",
     ".svg",
+    ".xml",
     ".toml",
 }
 
 # Deliberately conservative patterns for credential-like material. Examples in
 # documentation should use obviously synthetic placeholders that do not match.
+# The GitHub expression intentionally includes ghs_ installation tokens; the
+# length is open-ended so both legacy and newer stateless token formats match.
 SECRET_PATTERNS = {
     "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     "AWS access key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
@@ -78,7 +97,8 @@ def main() -> int:
         if path.name.lower() in DISALLOWED_NAMES or path.suffix.lower() in DISALLOWED_SUFFIXES:
             errors.append(f"disallowed public artifact: {path.relative_to(ROOT)}")
 
-    for path in iter_text_files():
+    text_files = iter_text_files()
+    for path in text_files:
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
@@ -95,7 +115,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print(f"Public repository validation passed ({len(iter_text_files())} text files scanned).")
+    print(f"Public repository validation passed ({len(text_files)} text files scanned).")
     return 0
 
 
