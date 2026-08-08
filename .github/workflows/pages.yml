@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Verify required site files
         shell: bash
@@ -58,7 +58,7 @@ jobs:
 
   deploy-pages:
     name: Deploy GitHub Pages
-    if: ${{ vars.ENABLE_GITHUB_PAGES == 'true' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     needs: validate-site
     environment:
       name: github-pages
@@ -66,13 +66,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
