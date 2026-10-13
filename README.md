@@ -5,7 +5,6 @@
 [![Repository quality](https://github.com/corexcapitalai/CoreX-Capital-AI/actions/workflows/quality.yml/badge.svg)](https://github.com/corexcapitalai/CoreX-Capital-AI/actions/workflows/quality.yml)
 [![CoreX Capital AI](https://img.shields.io/badge/CoreX-Capital%20AI-111827?style=flat-square)](https://corexcapitalai.com/)
 [![CoreX Signal AI](https://img.shields.io/badge/Product-CoreX%20Signal%20AI-155e75?style=flat-square)](https://corexsignalai.com/)
-[![AxisOption](https://img.shields.io/badge/Ecosystem-AxisOption-1d4ed8?style=flat-square)](https://axisoption.com/)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-7c3aed?style=flat-square)](LICENSE.md)
 
 > **Canonical public reference.** This repository organizes the publicly documented CoreX Capital AI ecosystem into a technical/product portal for engineering review, enterprise evaluation and product discovery. Proprietary source code, production credentials, model weights, internal datasets, private infrastructure, execution logic and licensed third-party source are intentionally excluded.
@@ -21,7 +20,6 @@ The portal is a multi-page public product reference rather than a single marketi
 | [`Overview`](https://corexcapitalai.github.io/CoreX-Capital-AI/) | Parent ecosystem, product map, enterprise boundary and system flow |
 | [`CoreX Signal AI`](https://corexcapitalai.github.io/CoreX-Capital-AI/signal-ai.html) | Explainable market intelligence, multi-timeframe analysis, probabilistic forecasting and published real-time architecture |
 | [`White-Label Infrastructure`](https://corexcapitalai.github.io/CoreX-Capital-AI/brokerage-infrastructure.html) | Complete brokerage operating stack, 12 modules, security, deployment and engagement model |
-| [`AxisOption`](https://corexcapitalai.github.io/CoreX-Capital-AI/axisoption.html) | Client-facing options platform, TradingView-based workflow, product family and CoreX technology relationship |
 | [`Strategy OS™`](https://corexcapitalai.github.io/CoreX-Capital-AI/strategy-os.html) | Custom AI/infrastructure for traders, funds, brokers and B2B systems |
 | [`Autonomous Veto`](https://corexcapitalai.github.io/CoreX-Capital-AI/governance.html) | Published deterministic governance, control and veto philosophy |
 | [`Technology`](https://corexcapitalai.github.io/CoreX-Capital-AI/technology.html) | Consolidated real-time, data, API, scaling, observability and security architecture |
@@ -40,7 +38,6 @@ The white-label documentation explicitly separates CoreX from the brokerage oper
 | Parent infrastructure | **CoreX Capital AI** | AI, real-time financial infrastructure, enterprise engineering and governance concepts |
 | Enterprise product | **White-Label Brokerage Infrastructure** | End-to-end brokerage technology under a partner's own brand |
 | Intelligence product | **CoreX Signal AI** | Explainable, multi-timeframe market intelligence and signal presentation |
-| Trading product | **AxisOption** | Separate client-facing options platform whose public site states that its trading infrastructure is powered by CoreX Capital AI |
 | Custom engineering | **Strategy OS™** | Dedicated AI, automation, simulation and infrastructure built from client strategy/objectives |
 | Governance | **Physics Core + Autonomous Veto Protocol** | Independent control and risk-veto concepts outside probabilistic model confidence |
 
@@ -78,11 +75,6 @@ The public CoreX Signal AI product presents an explainable AI command center wit
 
 Its published architecture describes a path from **MT5 Broker Data → Python Quant Engine → Flask-SocketIO → WebSocket → PWA client** and lists HMAC-SHA256 authentication, dual-pipeline delivery, data-integrity concepts and global edge delivery. The product site labels dashboard previews and performance-style examples as simulated/illustrative where applicable.
 
-## AxisOption
-
-AxisOption is a separate client-facing options platform in the broader ecosystem. Its public materials describe TradingView chart-based trading, one-click directional interaction, multi-asset markets, demo/live environments, configurable expiry choices, direct client support and an industry-standard white-label technology relationship with CoreX Capital AI.
-
-AxisOption publishes its own Terms of Service and Risk Disclosure. Trading and financial markets involve risk of loss and geographic restrictions can apply.
 
 ## Strategy OS™
 
@@ -152,9 +144,6 @@ Then open `http://localhost:8080`.
 - Strategy OS™ — https://corexcapitalai.com/strategy.html
 - Autonomous Veto Protocol — https://corexcapitalai.com/veto-protocol.html
 - CoreX Signal AI — https://corexsignalai.com/
-- AxisOption — https://axisoption.com/
-- AxisOption Products — https://axisoption.com/products.html
-- AxisOption About — https://axisoption.com/about.html
 
 ## Public/private boundary
 
