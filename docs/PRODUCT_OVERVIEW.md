@@ -66,31 +66,8 @@ The product page explicitly labels dashboard previews and sample layouts as simu
 
 Official source: https://corexsignalai.com/
 
-## 4. AxisOption — client-facing trading product
 
-AxisOption is a professional options trading platform whose public website states that its trading infrastructure is powered by CoreX Capital AI.
-
-Publicly described capabilities include:
-
-- chart-based trading through TradingView;
-- one-click BUY / SELL interaction;
-- forex, crypto, commodities and stocks;
-- demo and live platform modes;
-- virtual demo balance;
-- multiple expiry durations;
-- payout and expiry rules shown before trade confirmation;
-- direct client support via live chat and email;
-- multilingual platform access.
-
-AxisOption is a separate client-facing product with its own terms, risk disclosure and jurisdictional availability. Financial markets involve substantial risk of loss.
-
-Official sources:
-
-- https://axisoption.com/
-- https://axisoption.com/products.html
-- https://axisoption.com/about.html
-
-## 5. Strategy OS™ — custom AI & automation engineering
+## 4. Strategy OS™ — custom AI & automation engineering
 
 Strategy OS™ is CoreX's custom engineering service for individual traders, funds/asset managers, brokers and B2B platforms.
 
