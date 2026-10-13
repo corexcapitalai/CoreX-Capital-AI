@@ -1,6 +1,6 @@
 # Publicly Documented Architecture
 
-This document consolidates architecture information that CoreX Capital AI, CoreX Signal AI and AxisOption publish on their official public websites. It is a **public ecosystem map**, not a reconstruction of private source code or production topology.
+This document consolidates architecture information that CoreX Capital AI and CoreX Signal AI publish on their official public websites. It is a **public ecosystem map**, not a reconstruction of private source code or production topology.
 
 ## 1. Ecosystem-level view
 
@@ -12,7 +12,6 @@ flowchart TB
   C --> S[CoreX Signal AI\nMarket Intelligence]
   C --> ST[Strategy OS\nCustom AI & Automation]
   C --> G[Physics Core + Autonomous Veto\nControl / Governance Concepts]
-  C --> AX[AxisOption\nClient-Facing Trading Platform]
 
   WL --> WLC[Web / Mobile / Trading / Risk / CRM / KYC / Wallet / Admin]
   S --> SC[Explainable AI / Multi-TF / Forecast / Attribution / Macro Intelligence]
@@ -215,27 +214,8 @@ Official sources:
 - https://corexcapitalai.com/about.html
 - https://corexcapitalai.com/veto-protocol.html
 
-## 8. AxisOption's place in the ecosystem
 
-AxisOption is a separate client-facing options platform. Its public website states that the live trading terminal operates on CoreX Capital AI enterprise infrastructure and describes:
-
-- TradingView chart trading;
-- one-click order interaction;
-- multi-asset access;
-- demo and live environments;
-- flexible expiry settings;
-- published payout/expiry conditions;
-- direct 24/7 support.
-
-This document does not infer AxisOption's private backend topology beyond what its public site states.
-
-Official sources:
-
-- https://axisoption.com/
-- https://axisoption.com/about.html
-- https://axisoption.com/products.html
-
-## 9. Public/private boundary
+## 8. Public/private boundary
 
 The diagrams above intentionally exclude:
 
