@@ -29,7 +29,6 @@ REQUIRED = (
     "site/index.html",
     "site/signal-ai.html",
     "site/brokerage-infrastructure.html",
-    "site/axisoption.html",
     "site/strategy-os.html",
     "site/governance.html",
     "site/technology.html",
