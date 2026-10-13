@@ -33,7 +33,6 @@ jobs:
             site/index.html \
             site/signal-ai.html \
             site/brokerage-infrastructure.html \
-            site/axisoption.html \
             site/strategy-os.html \
             site/governance.html \
             site/technology.html \
@@ -158,7 +157,6 @@ jobs:
               base,
               base + 'signal-ai.html',
               base + 'brokerage-infrastructure.html',
-              base + 'axisoption.html',
               base + 'strategy-os.html',
               base + 'governance.html',
               base + 'technology.html',
@@ -200,7 +198,6 @@ jobs:
           declare -A checks=(
             [signal-ai.html]='CoreX Signal AI'
             [brokerage-infrastructure.html]='12 CORE MODULES'
-            [axisoption.html]='AxisOption'
             [strategy-os.html]='Strategy OS'
             [governance.html]='Autonomous Veto Protocol'
             [technology.html]='STACK BY LAYER'
