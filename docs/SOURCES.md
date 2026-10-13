@@ -8,9 +8,9 @@ This document records the first-party public sources used to describe the CoreX 
 
 Public statements are handled in four categories:
 
-1. **Published product capability** — a capability explicitly described on an official CoreX Capital AI, CoreX Signal AI or AxisOption page.
+1. **Published product capability** — a capability explicitly described on an official CoreX Capital AI or CoreX Signal AI page.
 2. **Published architecture description** — a technology, component or data-flow description explicitly published by the official product.
-3. **Company-published claim** — a performance, investment, milestone, security or implementation statement published by CoreX/AxisOption that this repository does not independently audit.
+3. **Company-published claim** — a performance, investment, milestone, security or implementation statement published by CoreX that this repository does not independently audit.
 4. **Illustrative/demo material** — example prices, scores, win-rate-style figures, latency displays or simulated trading states that the source page itself identifies as illustrative/demo data.
 
 The repository must not silently convert categories 3 or 4 into independently verified facts.
@@ -22,7 +22,8 @@ When two first-party pages describe the same product differently, this repositor
 Two currently observed examples:
 
 - The CoreX Capital AI parent homepage describes CoreX Signal AI as operating in **10 languages**, while the current CoreX Signal AI product architecture states an **11-language real-time client**. The portal uses the 11-language figure only when describing the Signal AI product architecture and otherwise uses neutral wording such as “multilingual.”
-- The AxisOption main-site footer currently highlights Binary, Turbo and Range Options, while the dedicated Products page also lists **One-Touch Options**. The portal treats the dedicated Products page as the product-family source.
+
+
 
 These are normal first-party content-version differences; they are recorded here so the public reference remains traceable and does not present a reconciled number as independently verified fact.
 
@@ -69,32 +70,3 @@ These are normal first-party content-version differences; they are recorded here
 - Brand references do not imply endorsement.
 - The official product labels dashboard previews and sample signal layouts as simulated/illustrative; this repository preserves that distinction.
 
-## AxisOption
-
-### Main platform
-- https://axisoption.com/
-- Used for: professional options positioning, TradingView chart interaction, multi-asset markets, transparent conditions, account operations, support and CoreX-powered infrastructure statement.
-
-### Products / demo terminal
-- https://axisoption.com/products.html
-- Used for: demo/live experience, one-click BUY/SELL, demo balance, expiry examples, cancellation interface, product capabilities and public product family (Binary, Turbo, Range and One-Touch Options).
-
-### Company / technology relationship
-- https://axisoption.com/about.html
-- Used for: company history, published 2018 launch, 2020+ CoreX infrastructure integration, direct support, multilingual presence, corporate information and description of the CoreX relationship as an industry-standard white-label arrangement.
-
-### Terms / risk disclosure
-- https://axisoption.com/terms.html
-- Used for: age/eligibility, risk notice, technology-provider statement and product-specific legal boundary.
-
-### Contact
-- https://axisoption.com/contact.html
-- Used for: published support channels and international-presence information where referenced.
-
-## Third-party references
-
-Third-party names shown in this repository are included only when the official product sites publicly list them as technologies, data sources, charting/infrastructure components or integrations. Their trademarks remain the property of their respective owners. Listing does not imply sponsorship, endorsement or a relationship beyond what the official product source states.
-
-## Private-source exclusion
-
-This provenance file and the public portal were prepared without using private CoreX repositories, private model artifacts, production credentials, internal datasets, confidential thresholds, private broker configuration or licensed TradingView source code.
