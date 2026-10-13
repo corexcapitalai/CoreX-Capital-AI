@@ -1,4 +1,4 @@
-# CoreX Capital AI — Public Ecosystem & Technology Reference
+# CoreX Capital AI — White-Label Brokerage Infrastructure
 
 [![Public portal](https://img.shields.io/badge/Public%20Portal-GitHub%20Pages-0f766e?style=flat-square)](https://corexcapitalai.github.io/CoreX-Capital-AI/)
 [![Portal validation](https://github.com/corexcapitalai/CoreX-Capital-AI/actions/workflows/pages.yml/badge.svg)](https://github.com/corexcapitalai/CoreX-Capital-AI/actions/workflows/pages.yml)
@@ -7,7 +7,7 @@
 [![CoreX Signal AI](https://img.shields.io/badge/Product-CoreX%20Signal%20AI-155e75?style=flat-square)](https://corexsignalai.com/)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-7c3aed?style=flat-square)](LICENSE.md)
 
-> **Canonical public reference.** This repository organizes the publicly documented CoreX Capital AI ecosystem into a technical/product portal for engineering review, enterprise evaluation and product discovery. Proprietary source code, production credentials, model weights, internal datasets, private infrastructure, execution logic and licensed third-party source are intentionally excluded.
+> **Canonical public reference.** This repository documents CoreX Capital AI's white-label brokerage infrastructure, supporting technology and related AI/control capabilities for enterprise evaluation. Proprietary source code, production credentials, model weights, internal datasets, private infrastructure, execution logic and licensed third-party source are intentionally excluded.
 
 ## Live public portal
 
@@ -27,7 +27,7 @@ The portal is a multi-page public product reference rather than a single marketi
 
 ## What CoreX Capital AI is
 
-CoreX Capital AI publicly positions itself as a **financial-technology infrastructure provider and AI company**. Its public ecosystem combines real-time financial infrastructure, agentic intelligence, market-analysis products, custom automation, brokerage technology and an independent control/governance philosophy.
+CoreX Capital AI provides financial-technology infrastructure and AI systems, with a core B2B offering for **white-label brokerage platforms**. Its documented stack spans branded web and mobile trading, trading and risk systems, pricing/liquidity controls, CRM, KYC, wallet/payment integrations, administration, reporting and APIs.
 
 The white-label documentation explicitly separates CoreX from the brokerage operator: CoreX builds and maintains technology infrastructure; it states that it does not hold brokerage client funds or act as the market counterparty.
 
